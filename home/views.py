@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
+from django.urls import reverse
 from .models import *
 # Create your views here.
 # def home(request):
@@ -16,3 +17,10 @@ class HomeView(BaseView):
 		self.views['categories'] = Category.objects.all()
 		self.views['sliders'] = Slider.objects.all()
 		return render(request,'index.html',self.views)
+
+
+class ProductView(BaseView):
+	def get(self,request,slug):
+		self.views['product_detail'] = Product.objects.filter(slug = slug)
+		return render(request,'single.html',self.views)
+

@@ -53,7 +53,7 @@
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a href="single.html">{{product.title}}</h6>							
+											<h6><a href="{{product.get_product_url}}">{{product.title}}</h6>							
 										</div>
 										<div class="mid-2">
 											{% if product.discounted_price > 0 %}
@@ -183,7 +183,7 @@
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a href="single.html">{{hot.title}}</a></h6>							
+											<h6><a href="{{product.get_product_url}}">{{hot.title}}</a></h6>							
 										</div>
 										<div class="mid-2">
 											{% if hot.discounted_price > 0 %}
