@@ -7,6 +7,7 @@ class Category(models.Model):
 	name = models.CharField(max_length = 300)
 	slug = models.CharField(max_length = 300,unique = True)
 	description = models.CharField(max_length = 300,blank = True)
+	status = models.CharField(max_length = 50,choices = STATUS,blank = True)
 
 	def __str__(self):
 		return self.name
@@ -44,7 +45,7 @@ class Product(models.Model):
 	labels = models.CharField(choices = LABELS, max_length=100,blank = True)
 
 	def __str__(self):
-		return self.name
+		return self.title
 
 class Ad(models.Model):
 	name = models.CharField(max_length = 300)
