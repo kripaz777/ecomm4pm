@@ -9,6 +9,8 @@ from .models import *
 
 class BaseView(View):
 	views = {}
+	views['categories'] = Category.objects.all()
+	views['subcategories'] = SubCategory.objects.all()
 
 class HomeView(BaseView):
 	def get(self,request):
@@ -23,4 +25,10 @@ class ProductView(BaseView):
 	def get(self,request,slug):
 		self.views['product_detail'] = Product.objects.filter(slug = slug)
 		return render(request,'single.html',self.views)
+
+class SubCategoryProductView(BaseView):
+	def get(self,request,slug):
+		ids = SubCategory.objects.get(slug = slug).id
+		self.views['subcategory_product'] = Product.objects.filter(subcategory_id = ids)
+		return render(request,'kitchen.html',self.views)
 

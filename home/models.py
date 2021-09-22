@@ -21,6 +21,9 @@ class SubCategory(models.Model):
 	def __str__(self):
 		return self.name
 
+	def get_product_url(self):
+		return reverse("home:subcategory",kwargs = {'slug':self.slug})
+
 class Slider(models.Model):
 	name = models.CharField(max_length = 300)
 	slug = models.CharField(max_length = 300,unique = True)
